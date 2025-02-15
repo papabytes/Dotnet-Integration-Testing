@@ -1,0 +1,21 @@
+services:
+  dotnet_template_api:
+    build:
+      context: .
+      dockerfile: ./Dotnet.Template.Api/Dockerfile
+    container_name: dotnet_template_api
+    image: dotnet_template_api:latest-local
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MONGODB_CONNECTIONSTRING=mongodb://dotnet_template_mongo:27017
+      - MONGODB_DATABASE=dotnet_template
+    ports:
+      - 8080:8080
+    depends_on:
+      - dotnet_template_mongo
+  
+  dotnet_template_mongo:
+    image: mongo:latest
+    container_name: dotnet_template_mongo
+    ports:
+      - 27017:27017

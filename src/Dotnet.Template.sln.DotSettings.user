@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c52d3cef_002D9130_002D456b_002D85a3_002Dd14323b321c2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ModelConverter_Convert_ConvertsTwoTypesSuccessfully" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.ModelConverterTests.ModelConverter_Convert_ConvertsTwoTypesSuccessfully&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.CQSR.Persons.Commands.Validators.CreatePersonCommandValidatorTests.Validate_AllPersonDtoFieldsAreNull_ReturnsAggregateException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.CQSR.Persons.Commands.Validators.CreatePersonCommandValidatorTests.Validate_PersonDtoCitizenIdIsNull_ReturnsAggregateExceptionWithSingleInnerException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.CQSR.Persons.Commands.Validators.CreatePersonCommandValidatorTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.CQSR.Persons.Commands.CreatePersonCommandTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::8D13CB30-4F96-4E6F-8645-2531394BB367::net8.0::Dotnet.Template.IntegrationTests.Application.CQRS.Persons.Commands.CreatePersonCommandIntegrationTests.ExecuteAsync_StoresPersonOnDb&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

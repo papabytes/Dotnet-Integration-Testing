@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Core", "Dotnet.Template.Core\Dotnet.Template.Core.csproj", "{37514D1E-1955-4507-ADF8-96B9834A3B5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.IntegrationTests", "Dotnet.Template.IntegrationTests\Dotnet.Template.IntegrationTests.csproj", "{8D13CB30-4F96-4E6F-8645-2531394BB367}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Api", "Dotnet.Template.Api\Dotnet.Template.Api.csproj", "{D44F0AC8-FAD1-4CE8-B242-E85D93745477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Application", "Dotnet.Template.Application\Dotnet.Template.Application.csproj", "{6153D7FF-DB4F-42D3-B4C8-F8EEE18A3F52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Infrastructure.MongoDb", "Dotnet.Template.Infrastructure.MongoDb\Dotnet.Template.Infrastructure.MongoDb.csproj", "{40A9F170-897B-416E-99ED-4912820B378F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.UnitTests", "Dotnet.Template.UnitTests\Dotnet.Template.UnitTests.csproj", "{449FD2EB-BEDA-4B42-9297-098D275BBBAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37514D1E-1955-4507-ADF8-96B9834A3B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37514D1E-1955-4507-ADF8-96B9834A3B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37514D1E-1955-4507-ADF8-96B9834A3B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37514D1E-1955-4507-ADF8-96B9834A3B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D13CB30-4F96-4E6F-8645-2531394BB367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D13CB30-4F96-4E6F-8645-2531394BB367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D13CB30-4F96-4E6F-8645-2531394BB367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D13CB30-4F96-4E6F-8645-2531394BB367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D44F0AC8-FAD1-4CE8-B242-E85D93745477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44F0AC8-FAD1-4CE8-B242-E85D93745477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44F0AC8-FAD1-4CE8-B242-E85D93745477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44F0AC8-FAD1-4CE8-B242-E85D93745477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6153D7FF-DB4F-42D3-B4C8-F8EEE18A3F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6153D7FF-DB4F-42D3-B4C8-F8EEE18A3F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6153D7FF-DB4F-42D3-B4C8-F8EEE18A3F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6153D7FF-DB4F-42D3-B4C8-F8EEE18A3F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A9F170-897B-416E-99ED-4912820B378F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A9F170-897B-416E-99ED-4912820B378F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A9F170-897B-416E-99ED-4912820B378F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A9F170-897B-416E-99ED-4912820B378F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449FD2EB-BEDA-4B42-9297-098D275BBBAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449FD2EB-BEDA-4B42-9297-098D275BBBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449FD2EB-BEDA-4B42-9297-098D275BBBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449FD2EB-BEDA-4B42-9297-098D275BBBAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,5 +1,7 @@
 ﻿namespace Dotnet.Template.IntegrationTests.Application.CQRS.Persons.Commands;
 
+using Core.Exceptions;
+using MongoDB.Driver;
 using Template.Application.CQSR.Persons.Dtos;
 
 public class CreatePersonCommandIntegrationTests : IClassFixture<CreatePersonCommandIntegrationTestFixture>
@@ -32,5 +34,40 @@ public class CreatePersonCommandIntegrationTests : IClassFixture<CreatePersonCom
 
         // Assert
         Assert.NotEqual(Guid.Empty, res);
+    }
+    
+    
+    [Fact]
+    public async Task ExecuteAsync_StoringSecondPersonWithRepeatedCitizenId_ThrowsException()
+    {
+        // Arrange
+        var personDto = new PersonDto
+        {
+            CitizenId = Guid.NewGuid().ToString(),
+            Country = "POR",
+            DateOfBirth = new DateTime(1995, 10, 22),
+            FirstName = "Antonio",
+            LastName = "Guedes",
+            SocialSecurityNumber = new Random().Next(100_000_000, 300_000_000).ToString()
+        };
+        
+        
+        var person2Dto = new PersonDto
+        {
+            CitizenId = personDto.CitizenId,
+            Country = "POR",
+            DateOfBirth = new DateTime(1995, 10, 23),
+            FirstName = "Manuel",
+            LastName = "Mendes",
+            SocialSecurityNumber = new Random().Next(100_000_000, 300_000_000).ToString()
+        };
+
+        var service = this._fixture.GetTestService();
+
+        // Act and Assert
+        var res = await service.ExecuteAsync(personDto);
+        Assert.NotEqual(Guid.Empty, res);
+
+        await Assert.ThrowsAsync<CitizenIdAlreadyExistsException>(async () => await service.ExecuteAsync(person2Dto));
     }
 }

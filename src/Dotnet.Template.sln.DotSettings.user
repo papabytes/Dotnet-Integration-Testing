@@ -7,5 +7,6 @@
     &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.CQSR.Persons.Commands.Validators.CreatePersonCommandValidatorTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::449FD2EB-BEDA-4B42-9297-098D275BBBAA::net8.0::Dotnet.Template.UnitTests.Application.CQSR.Persons.Commands.CreatePersonCommandTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::8D13CB30-4F96-4E6F-8645-2531394BB367::net8.0::Dotnet.Template.IntegrationTests.Application.CQRS.Persons.Commands.CreatePersonCommandIntegrationTests.ExecuteAsync_StoresPersonOnDb&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::8D13CB30-4F96-4E6F-8645-2531394BB367::net8.0::Dotnet.Template.IntegrationTests.Application.CQRS.Persons.Commands.CreatePersonCommandIntegrationTests.ExecuteAsync_StoringSecondPersonWithRepeatedCitizenId_ThrowsException&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -8,9 +8,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Dotnet.Template.Api/Dotnet.Template.Api.csproj", "Dotnet.Template.Api/"]
-COPY ["Dotnet.Template.Application/Dotnet.Template.Application.csproj", "Dotnet.Template.Application/"]
-COPY ["Dotnet.Template.Core/Dotnet.Template.Core.csproj", "Dotnet.Template.Core/"]
-COPY ["Dotnet.Template.Infrastructure/Dotnet.Template.Infrastructure.csproj", "Dotnet.Template.Infrastructure/"]
 RUN dotnet restore "Dotnet.Template.Api/Dotnet.Template.Api.csproj"
 COPY . .
 WORKDIR "/src/Dotnet.Template.Api"

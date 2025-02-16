@@ -3,6 +3,7 @@
 using System.Linq.Expressions;
 using Constants;
 using Core.Entities;
+using Core.Exceptions;
 using Core.Repositories;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
@@ -16,8 +17,26 @@ public class PersonRepository : RepositoryBase<Person>, IPersonRepository
     
     public async Task<string> CreatePersonAsync(Person person)
     {
-        await Collection.InsertOneAsync(person);
-        return person.CitizenId;
+        try
+        {
+            await Collection.InsertOneAsync(person);
+            return person.CitizenId;
+        }
+        catch (MongoWriteException ex)
+        {
+            this.Logger.LogError(ex, "[PersonRepository]: CreatePersonAsync -> Failed to Create Person with Citizen ID {citizenId}", person.CitizenId);
+            if (ex.WriteError.Category == ServerErrorCategory.DuplicateKey)
+            {
+                throw new CitizenIdAlreadyExistsException(person.CitizenId);
+            }
+
+            throw;
+        }
+        catch (Exception ex)
+        {
+            this.Logger.LogError(ex, "[PersonRepository]: CreatePersonAsync -> An unexpected exception occurred while creating person with Citizen ID {citizenId}", person.CitizenId);
+            throw;
+        }
     }
 
     public async Task<IEnumerable<Person>> GetPersonsAsync(Expression<Func<Person, bool>> clause)

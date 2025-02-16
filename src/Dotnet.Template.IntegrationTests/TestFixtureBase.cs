@@ -48,8 +48,8 @@ public abstract class TestFixtureBase : WebApplicationFactory<Program>, IAsyncLi
 
     private void SetEnvironmentVariables()
     {
-         Environment.SetEnvironmentVariable(MongoDbInfrastructureEnvironmentVariables.MongoDBDatabase, $"mongodb://localhost:{MongoHostPort}");
-         Environment.SetEnvironmentVariable(MongoDbInfrastructureEnvironmentVariables.MongoDBDatabase, "dotnet_template");
+         Environment.SetEnvironmentVariable(MongoDbInfrastructureEnvironmentVariables.MongoDBConnectionString, $"mongodb://localhost:{MongoHostPort}");
+         Environment.SetEnvironmentVariable(MongoDbInfrastructureEnvironmentVariables.MongoDBDatabase, "dotnet_template_tests");
     }
 
     public virtual async Task DisposeAsync()

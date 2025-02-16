@@ -1,5 +1,6 @@
 namespace Dotnet.Template.Api;
 
+using Application;
 using Constants;
 using Infrastructure;
 using OpenTelemetry.Logs;
@@ -152,5 +153,6 @@ public partial class Program
     private static void ConfigureServices(IHostApplicationBuilder hostApplicationBuilder)
     {
         hostApplicationBuilder.Services.AddMongoDbInfrastructureServices();
+        hostApplicationBuilder.Services.AddApplicationServices();
     }
 }

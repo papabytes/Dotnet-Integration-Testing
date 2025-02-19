@@ -5,7 +5,6 @@ using Constants;
 using Infrastructure;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 public partial class Program
@@ -13,14 +12,16 @@ public partial class Program
     public static async Task Main(params string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var configuration = ConfigureConfiguration(builder);
+        var configuration = ConfigureConfiguration(builder); 
         
+        builder.Services.AddControllers();
         ConfigureKestrel(builder, configuration);
         ConfigureCors(builder, configuration);
-        ConfigureOpenTelemetry(builder);
         ConfigureServices(builder);
+        ConfigureOpenTelemetry(builder, configuration);
         
         var app = builder.Build();
+        app.MapControllers();
         app.UseCors();
 
         try
@@ -35,12 +36,25 @@ public partial class Program
         }
     }
 
-    private static void ConfigureOpenTelemetry(IHostApplicationBuilder hostBuilder)
+    private static void ConfigureOpenTelemetry(IHostApplicationBuilder hostBuilder, IConfiguration configuration)
     {
+        var minimumLogLevelEnvVar = configuration.GetValue<LogLevel?>(ApiEnvironmentVariables.Logging.MinimumLogLevel) ?? LogLevel.Information;
+        
+        hostBuilder.Logging.SetMinimumLevel(minimumLogLevelEnvVar);
+        hostBuilder.Logging.ClearProviders()
+            .AddFilter("Microsoft", LogLevel.Error);
+
+
+        string[] excludableEndpointPaths = ["/healthz"];
+       
+        
         hostBuilder.Services.AddOpenTelemetry()
             .WithTracing(tracing =>
             {
-                tracing.AddAspNetCoreInstrumentation()
+                tracing.AddAspNetCoreInstrumentation(opts =>
+                    {
+                        opts.Filter = (context) => excludableEndpointPaths.Contains(context.Request.PathBase.Value);
+                    })
                     .AddHttpClientInstrumentation()
                     .AddConsoleExporter();
             })
@@ -49,13 +63,15 @@ public partial class Program
                 metrics.AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
                     .AddConsoleExporter();
+            })
+            .WithLogging(configureBuilder =>
+            {
+                configureBuilder.AddConsoleExporter();
+            }, configureOptions =>
+            {
+                configureOptions.IncludeScopes = true;
+                configureOptions.IncludeFormattedMessage = true;
             });
-        
-        hostBuilder.Logging.ClearProviders().AddOpenTelemetry(opt =>
-        {
-            opt.SetResourceBuilder(ResourceBuilder.CreateDefault())
-                .AddConsoleExporter();
-        });
     }
 
     /// <summary>
@@ -84,7 +100,7 @@ public partial class Program
         var configuredUrls = configuration.GetValue<string>(ApiEnvironmentVariables.WebServerHostingUrls);
         if (string.IsNullOrWhiteSpace(configuredUrls))
         {
-            const string defaultUrls = "http://+:8080";
+            var defaultUrls = $"http://+:{defaultPort}";
             Console.WriteLine(
                 $"The hosting environment variable {ApiEnvironmentVariables.WebServerHostingUrls} was not set. Using default URLs: {defaultUrls}");
             webApplicationBuilder.WebHost.UseUrls(defaultUrls);
